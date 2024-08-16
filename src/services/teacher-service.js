@@ -41,6 +41,37 @@ class TeacherService {
             throw error;
         }
     }
+
+    async getByEmail(data) {
+        try {
+            const teacher = await this.teacherRepository.getByEmail(data);
+            return teacher;
+        } catch (error) {
+            console.log("Service error");
+            throw error;
+        }
+    }
+
+    async getById(data) {
+        try {
+            const teacher = await this.teacherRepository.getById(data);
+            return teacher;
+        } catch (error) {
+            console.log("Service error");
+            throw error;
+        }
+    }
+
+    async removeTeacher(data) {
+        try {
+            const teacher = await this.teacherRepository.getByEmail(data.email)
+            await this.studentRepository.destroy(teacher.id);
+            return true;
+        } catch (error) {
+            console.log("Service error");
+            throw error;
+        }
+    }
 }
 
 module.exports = TeacherService;

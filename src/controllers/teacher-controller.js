@@ -1,10 +1,10 @@
-const ParentService = require('../services/parent-service');
+const TeacherService = require('../services/teacher-service');
 
-const parentService = new ParentService();
+const teacherService = new TeacherService();
 
 const create = async (req, res) => {
     try {
-        const response = await parentService.create(req.body);
+        const response = await teacherService.create(req.body);
         return res.status(201).json({
             success: true,
             message: 'Successfully created a new user',
@@ -24,7 +24,7 @@ const create = async (req, res) => {
 
 const signIn = async (req, res) => {
     try {
-        const response = await parentService.signIn(req.body);
+        const response = await teacherService.signIn(req.body);
         return res.status(200).json({
             success: true,
             data: response,
@@ -44,7 +44,7 @@ const signIn = async (req, res) => {
 
 const findByEmail = async (req, res) => {
     try {
-        const response = await parentService.getByEmail(req.query.email);
+        const response = await teacherService.getByEmail(req.query.email);
         return res.status(200).json({
             success: true,
             data: response,
@@ -64,7 +64,7 @@ const findByEmail = async (req, res) => {
 
 const findById = async (req, res) => {
     try {
-        const response = await parentService.getById(req.params.id);
+        const response = await teacherService.getById(req.params.id);
         return res.status(200).json({
             success: true,
             data: response,
@@ -84,12 +84,12 @@ const findById = async (req, res) => {
 
 const remove = async (req, res) => {
     try {
-        const response = await parentService.removeParent(req.body);
+        const response = await teacherService.removeteacher(req.body);
         return res.status(200).json({
             success: true,
             data: response,
             err: {},
-            message: 'Successfully removed parent'
+            message: 'Successfully removed student'
         });
     } catch (error) {
         console.log(error);
